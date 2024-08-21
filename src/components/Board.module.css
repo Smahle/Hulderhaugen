@@ -1,0 +1,27 @@
+/* Board.module.css */
+
+.outerContainer {
+  display: flex;
+  align-items: flex-start; /* Align items at the start (top) of the container */
+  gap: 20px; /* Space between the board and the button */
+  padding: 20px; /* Add padding to the container if needed */
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px); /* 3 columns of 100px each */
+  grid-template-rows: repeat(3, 100px); /* 3 rows of 100px each */
+  gap: 10px; /* Space between grid items */
+}
+
+li {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resetButton {
+  display: flex;
+  align-items: center; /* Center the button vertically */
+}
