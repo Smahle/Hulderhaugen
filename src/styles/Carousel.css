@@ -1,0 +1,16 @@
+.carousel-container {
+    width: 100%; /* Ensure the carousel takes the full width of its container */
+    overflow: hidden; /* Hide overflow if images exceed container */
+  }
+  
+  .carousel-container .slick-slide {
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center content horizontally */
+  }
+  
+  .carousel-container .slick-slide img {
+    width: 100%; /* Ensure images take up the full width of the slide */
+    height: 500px; /* Set a fixed height for all images */
+    object-fit: cover; /* Ensure the image covers the area, cropping if necessary */
+    display: block; /* Remove bottom space from inline-block images */
+  }
