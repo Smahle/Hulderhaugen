@@ -19,6 +19,9 @@ const Navbar: React.FC = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/game">Game</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/dota2">Dota2</Link>
+            </li>
           </ul>
         </div>
       </div>

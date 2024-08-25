@@ -1,0 +1,119 @@
+/* src/components/dota2/Dota2Page.module.css */
+
+/* General Body Styling */
+body {
+  background-color: #1b1f23;
+  /* Dark background for the whole page */
+  color: #eaeaea;
+  /* Light text color for readability */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Section */
+.header {
+  background-image: linear-gradient(to right, rgb(131, 51, 18), rgba(131, 51, 18, 0));
+  /* Darker header background */
+  color: #ffffff;
+  /* Light text color for headers */
+  padding: 20px;
+  text-align: center;
+  border-bottom: 3px solid #444;
+  /* Subtle border at the bottom */
+}
+
+/* Section Styling */
+.section {
+  padding: 60px 20px;
+  /* Vertical padding with horizontal spacing */
+  background-color: #2a2e32;
+  /* Dark gray for section background */
+  border-bottom: 1px solid #3e4347;
+  /* Subtle border between sections */
+  text-align: center;
+  /* Center the content */
+}
+
+/* Container Styling */
+.container {
+  max-width: 1000px;
+  /* Wider container for large screens */
+  margin: 0 auto;
+  /* Center the container horizontally */
+}
+
+.section .container {
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.38) 3.07%, rgba(6, 37, 65, 0.3) 88.06%);
+  font-family: Radiance, "Noto Sans", sans-serif;
+  height: 500px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 20px;
+  unicode-bidi: isolate;
+  width: 1097.27px;
+}
+
+/* Header Styling */
+.section h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  text-shadow:rgb(0, 0, 0) 0px 0px 5px;
+  font-weight: 400;
+}
+
+/* Paragraph Styling */
+.section p {
+  font-size: 1rem;
+  color: #d0d0d0;
+  /* Light gray color for paragraphs */
+  line-height: 1.6;
+  /* Increased line height for readability */
+  margin-bottom: 20px;
+}
+
+/* Links */
+a {
+  color: #1e90ff;
+  /* Bright blue color for links */
+  text-decoration: none;
+  /* Remove underline */
+}
+
+a:hover {
+  text-decoration: underline;
+  /* Underline on hover */
+}
+
+/* Button Styling */
+.button {
+  background-color: #444;
+  /* Dark button background */
+  color: #ffffff;
+  /* Light text color */
+  padding: 10px 20px;
+  /* Padding inside the button */
+  border: none;
+  border-radius: 4px;
+  /* Rounded corners */
+  cursor: pointer;
+  /* Pointer cursor on hover */
+  font-size: 1rem;
+}
+
+.button:hover {
+  background-color: #555;
+  /* Slightly lighter background on hover */
+}
+
+/* Additional styling */
+img {
+  max-width: 100%;
+  /* Responsive images */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  /* Center images */
+}
