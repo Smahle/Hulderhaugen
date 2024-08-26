@@ -25,8 +25,7 @@ const PhotoGallery: React.FC = () => {
         slidesToScroll: 1,
     };
     
-// Using React Slick and Slick Carousel
-
+// Using React Slick and Slick Carousel:
     return (
         <div className="carousel-container">
             <Slider {...settings}>
