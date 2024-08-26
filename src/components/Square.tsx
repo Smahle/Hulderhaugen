@@ -20,12 +20,12 @@ type internalState = {
 };
 
 // Functional component with typed props
-const Square: React.FC<externalProps> = ({
+export default function Square({
   id,
   gameOver,
   gameReset,
   gameInBoard: gameInBoard,
-}) => {
+}: externalProps) {
   const [state, setState] = useState<internalState>({
     value: null,
     squaresTaken: 0,
@@ -58,6 +58,4 @@ const Square: React.FC<externalProps> = ({
       {state.value}
     </button>
   );
-};
-
-export default Square;
+}

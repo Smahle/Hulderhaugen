@@ -1,11 +1,11 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import GamePage from './pages/GamePage';
-import HomePage from './pages/HomePage';
-import Dota2Page from './pages/Dota2Page';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import GamePage from "./pages/GamePage";
+import HomePage from "./pages/HomePage";
+import Dota2Page from "./pages/Dota2Page";
 
-const App: React.FC = () => {
+export default function App() {
   // Router (NavBar with links to pages):
   return (
     <Router>
@@ -17,6 +17,4 @@ const App: React.FC = () => {
       </Routes>
     </Router>
   );
-};
-
-export default App;
+}

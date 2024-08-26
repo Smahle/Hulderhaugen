@@ -1,9 +1,9 @@
-import React from 'react';
-import PlayerPerformanceDashboard from '../components/dota2/PlayerPerformanceDashboard/PlayerPerformanceDashboard';
-import HeroMatchupAnalyzer from '../components/dota2/HeroMatchupAnalyzer';
-import MatchRecap from '../components/dota2/MatchRecap';
+import React from "react";
+import PlayerPerformanceDashboard from "../components/dota2/PlayerPerformanceDashboard/PlayerPerformanceDashboard";
+import HeroMatchupAnalyzer from "../components/dota2/HeroMatchupAnalyzer";
+import MatchRecap from "../components/dota2/MatchRecap";
 
-const Dota2Page: React.FC = () => {
+export default function Dota2Page() {
   return (
     <div>
       <PlayerPerformanceDashboard />
@@ -11,6 +11,4 @@ const Dota2Page: React.FC = () => {
       <MatchRecap />
     </div>
   );
-};
-
-export default Dota2Page;
+}

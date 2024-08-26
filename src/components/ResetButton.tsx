@@ -4,7 +4,7 @@ type externalProps = {
   resetGame: () => void;
 };
 
-const ResetButton: React.FC<externalProps> = ({ resetGame }) => {
+export default function ResetButton({ resetGame }: externalProps) {
   function handleClick() {
     resetGame();
   }
@@ -14,6 +14,4 @@ const ResetButton: React.FC<externalProps> = ({ resetGame }) => {
       Reset
     </button>
   );
-};
-
-export default ResetButton;
+}
