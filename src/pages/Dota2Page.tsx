@@ -1,5 +1,5 @@
 import React from 'react';
-import PlayerPerformanceDashboard from '../components/dota2/PlayerPerformanceDashboard';
+import PlayerPerformanceDashboard from '../components/dota2/PlayerPerformanceDashboard/PlayerPerformanceDashboard';
 import HeroMatchupAnalyzer from '../components/dota2/HeroMatchupAnalyzer';
 import MatchRecap from '../components/dota2/MatchRecap';
 
