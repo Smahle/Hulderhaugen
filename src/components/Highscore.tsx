@@ -5,7 +5,7 @@ type HighScore = {
   score: number;
 };
 
-function HighScores() {
+export default function HighScores() {
   const [highScoreArray, setHighScoreArray] = useState<HighScore[]>([]);
 
   const addHighScore = (playerName: string, score: number) => {
@@ -25,5 +25,3 @@ function HighScores() {
     </div>
   );
 }
-
-export default HighScores;

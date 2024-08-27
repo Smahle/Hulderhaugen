@@ -5,8 +5,7 @@ import GamePage from "./pages/GamePage";
 import HomePage from "./pages/HomePage";
 import Dota2Page from "./pages/Dota2Page";
 
-export default function App() {
-  // Router (NavBar with links to pages):
+const App: React.FC = () => {
   return (
     <Router>
       <Navbar />
@@ -17,4 +16,6 @@ export default function App() {
       </Routes>
     </Router>
   );
-}
+};
+
+export default App;

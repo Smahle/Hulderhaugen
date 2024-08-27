@@ -1,36 +1,62 @@
 import Square from "./Square";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./Board.module.css";
 import ResetButton from "./ResetButton";
 import HighScores from "./Highscore";
+
+type HighScore = {
+  playerName: string;
+  score: number;
+};
 
 function Board() {
   const [xNext, setXNext] = useState(false);
   const [squaresTaken, setSquaresTaken] = useState(0);
   const [boardArray, setBoardArray] = useState(Array(9).fill(null));
   const [gameOver, setGameOver] = useState(false);
-  const [gameReset, setGameReset] = useState(false);
-  const [highScoreArray, setHighScoreArray] = useState(Array);
+  const [highScoreArray, setHighScoreArray] = useState<HighScore[]>([
+    { playerName: "X", score: 0 },
+    { playerName: "O", score: 0 },
+  ]);
 
-  function game(id: number, currentSquaresTaken: number) {
+  function game(id: number): string | null {
+    if (gameOver || boardArray[id]) return null; // Return null if the game is over or the square is taken
+
     const currentPlayer = xNext ? "X" : "O";
     setXNext(!xNext);
     setSquaresTaken((prev) => prev + 1);
 
-    setBoardArray((prevBoard) => {
-      const newBoard = [...prevBoard];
-      newBoard[id] = currentPlayer;
-      if (
-        checkVertical(newBoard) ||
-        checkHorizontal(newBoard) ||
-        checkDiagonal(newBoard)
-      ) {
-        setGameOver(true);
-      }
-      return newBoard;
-    });
+    const newBoard = [...boardArray];
+    newBoard[id] = currentPlayer;
+    setBoardArray(newBoard);
 
-    return { currentPlayer, squaresTaken: currentSquaresTaken + 1 };
+    let winner = null;
+    if (
+      checkXVertical(newBoard) ||
+      checkXHorizontal(newBoard) ||
+      checkXDiagonal(newBoard)
+    ) {
+      winner = "X";
+    } else if (
+      checkOVertical(newBoard) ||
+      checkOHorizontal(newBoard) ||
+      checkODiagonal(newBoard)
+    ) {
+      winner = "O";
+    }
+
+    if (winner) {
+      setGameOver(true);
+      setHighScoreArray((prev) =>
+        prev.map((player) =>
+          player.playerName === winner
+            ? { ...player, score: player.score + 1 }
+            : player
+        )
+      );
+    }
+
+    return currentPlayer; // Return the current player after the move
   }
 
   function resetGame() {
@@ -38,19 +64,12 @@ function Board() {
     setSquaresTaken(0);
     setBoardArray(Array(9).fill(null));
     setGameOver(false);
-    setGameReset(true);
-    setTimeout(() => {
-      setGameReset(false);
-    }, 0);
   }
 
   return (
     <div className={classes.outerContainer}>
       <div>
-        {(squaresTaken >= 9 ||
-          checkHorizontal(boardArray) ||
-          checkVertical(boardArray) ||
-          checkDiagonal(boardArray)) && (
+        {gameOver && (
           <div className="alert alert-primary" role="alert">
             GAME OVER
           </div>
@@ -61,8 +80,8 @@ function Board() {
               <Square
                 id={index}
                 gameOver={gameOver}
-                gameReset={gameReset}
-                gameInBoard={game}
+                gameReset={gameOver}
+                gameInBoard={game} // Pass the game function
               />
             </li>
           ))}
@@ -78,10 +97,14 @@ function Board() {
   );
 }
 
-function checkVertical(array: string[]): boolean {
+// ... (other functions like checkXVertical, checkOVertical, etc.)
+
+export default Board;
+
+function checkXVertical(array: string[]): boolean {
   for (let i = 0; i < 3; i++) {
     if (
-      array[i] !== null &&
+      array[i] === "X" &&
       array[i] === array[i + 3] &&
       array[i] === array[i + 6]
     ) {
@@ -91,10 +114,23 @@ function checkVertical(array: string[]): boolean {
   return false;
 }
 
-function checkHorizontal(array: string[]): boolean {
+function checkOVertical(array: string[]): boolean {
+  for (let i = 0; i < 3; i++) {
+    if (
+      array[i] === "O" &&
+      array[i] === array[i + 3] &&
+      array[i] === array[i + 6]
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function checkXHorizontal(array: string[]): boolean {
   for (let i = 0; i < 9; i += 3) {
     if (
-      array[i] != null &&
+      array[i] === "X" &&
       array[i] === array[i + 1] &&
       array[i] === array[i + 2]
     ) {
@@ -104,14 +140,35 @@ function checkHorizontal(array: string[]): boolean {
   return false;
 }
 
-function checkDiagonal(array: string[]): boolean {
-  if (array[0] != null && array[0] === array[4] && array[0] === array[8]) {
+function checkOHorizontal(array: string[]): boolean {
+  for (let i = 0; i < 9; i += 3) {
+    if (
+      array[i] === "O" &&
+      array[i] === array[i + 1] &&
+      array[i] === array[i + 2]
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function checkXDiagonal(array: string[]): boolean {
+  if (array[0] === "X" && array[0] === array[4] && array[0] === array[8]) {
     return true;
   }
-  if (array[2] != null && array[2] === array[4] && array[2] === array[6]) {
+  if (array[2] === "X" && array[2] === array[4] && array[2] === array[6]) {
     return true;
   }
   return false;
 }
 
-export default Board;
+function checkODiagonal(array: string[]): boolean {
+  if (array[0] === "O" && array[0] === array[4] && array[0] === array[8]) {
+    return true;
+  }
+  if (array[2] === "O" && array[2] === array[4] && array[2] === array[6]) {
+    return true;
+  }
+  return false;
+}
