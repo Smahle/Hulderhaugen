@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import classes from "./Navbar.module.css";
 
 export default function Navbar() {
   return (
@@ -20,23 +21,17 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/game">
-                Game
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/dota2">
-                Dota2
-              </Link>
-            </li>
-          </ul>
+          <div className={classes["collapse-menu"]}>
+            <Link className={classes["collapsed-links"]} to="/">
+              <span>Home</span>
+            </Link>
+            <Link className={classes["collapsed-links"]} to="/game">
+              <span>Game</span>
+            </Link>
+            <Link className={classes["collapsed-links"]} to="/dota2">
+              <span>Dota2</span>
+            </Link>
+          </div>
         </div>
       </div>
     </nav>
