@@ -1,5 +1,3 @@
-// src/components/Navbar.tsx
-
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -13,8 +11,8 @@ export default function Navbar() {
         <button
           className="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
           aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
