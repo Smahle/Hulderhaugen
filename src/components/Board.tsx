@@ -2,7 +2,6 @@ import Square from "./Square";
 import { useEffect, useState } from "react";
 import classes from "./Board.module.css";
 import ResetButton from "./ResetButton";
-import HighScores from "./Highscore";
 
 type HighScore = {
   playerName: string;
@@ -14,7 +13,7 @@ function Board() {
   const [squaresTaken, setSquaresTaken] = useState(0);
   const [boardArray, setBoardArray] = useState(Array(9).fill(null));
   const [gameOver, setGameOver] = useState(false);
-  const [highScoreArray, setHighScoreArray] = useState<HighScore[]>([
+  const [scoreArray, setScoreArray] = useState<HighScore[]>([
     { playerName: "X", score: 0 },
     { playerName: "O", score: 0 },
   ]);
@@ -47,7 +46,7 @@ function Board() {
 
     if (winner) {
       setGameOver(true);
-      setHighScoreArray((prev) =>
+      setScoreArray((prev) =>
         prev.map((player) =>
           player.playerName === winner
             ? { ...player, score: player.score + 1 }
@@ -90,14 +89,15 @@ function Board() {
       <div className={classes.resetButton}>
         <ResetButton resetGame={resetGame} />
       </div>
-      <div className={classes.resetButton}>
-        <HighScores />
+      <div>
+        <h1>Score</h1>
+        <span>X: {scoreArray[0].score} points</span>
+        <br />
+        <span>O: {scoreArray[1].score} points</span>
       </div>
     </div>
   );
 }
-
-// ... (other functions like checkXVertical, checkOVertical, etc.)
 
 export default Board;
 
