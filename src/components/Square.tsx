@@ -1,61 +1,41 @@
 import { useEffect, useState } from "react";
 import classes from "./Square.module.css";
 
-// Define the props type for the Square component
 type externalProps = {
   id: number;
   gameOver: boolean;
   gameReset: boolean;
-  gameInBoard: (
-    id: number,
-    value: number
-  ) => {
-    currentPlayer: string;
-    squaresTaken: number;
-  };
-};
-type internalState = {
-  value: string | null;
-  squaresTaken: number;
+  gameInBoard: (id: number) => string | null; // Return type is string | null
 };
 
-// Functional component with typed props
 export default function Square({
   id,
   gameOver,
   gameReset,
-  gameInBoard: gameInBoard,
+  gameInBoard,
 }: externalProps) {
-  const [state, setState] = useState<internalState>({
-    value: null,
-    squaresTaken: 0,
-  });
+  const [value, setValue] = useState<string | null>(null);
 
   useEffect(() => {
     if (gameReset) {
-      setState({ value: null, squaresTaken: 0 });
+      setValue(null); // Reset square value when the game is reset
     }
   }, [gameReset]);
 
   function handleClick() {
-    if (!state.value) {
-      const { currentPlayer, squaresTaken } = gameInBoard(
-        id,
-        state.squaresTaken
-      );
-      setState({
-        value: currentPlayer,
-        squaresTaken: squaresTaken,
-      });
+    if (!value && !gameOver) {
+      const currentPlayer = gameInBoard(id); // Get the current player
+      setValue(currentPlayer); // Set the value of the square to the current player
     }
   }
+
   return (
     <button
       className={classes.squareSize}
       disabled={gameOver}
       onClick={handleClick}
     >
-      {state.value}
+      {value}
     </button>
   );
 }

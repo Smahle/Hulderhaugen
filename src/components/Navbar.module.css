@@ -1,0 +1,18 @@
+.collapse-menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 300px; /* Adjust column layout */
+  width: 100%; /* Full width */
+  gap: 10px; /* Space between items if needed */
+}
+
+.collapsed-links {
+  display: block; /* Ensure it’s a block-level element */
+  padding: 10px; /* Add padding around text */
+  color: #ffffff; /* Text color */
+  border-radius: 4px; /* Rounded corners */
+  text-decoration: none; /* Remove underline */
+}
+
+.collapsed-links:hover {
+  background-color: rgb(105, 41, 14); /* Background color on hover */
+}
