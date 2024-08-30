@@ -60,7 +60,7 @@ export const fetchPlayerHeroes = (accountId: string) => {
 };
 
 /* ----- Mock API calls ----- */
-export const fetchMockPlayerData = (id: string) => Promise.resolve(mockAccountResponse);
-export const fetchMockPlayerMatches = (id: string) => Promise.resolve(mockMatchesResponse);
-export const fetchMockPlayerWinLoss = (id: string) => Promise.resolve(mockWLResponse);
-export const fetchMockPlayerHeroes = (id: string) => Promise.resolve(mockHeroesResponse);
+export const fetchMockPlayerData = () => Promise.resolve(mockAccountResponse);
+export const fetchMockPlayerMatches = () => Promise.resolve(mockMatchesResponse);
+export const fetchMockPlayerWinLoss = () => Promise.resolve(mockWLResponse);
+export const fetchMockPlayerHeroes = () => Promise.resolve(mockHeroesResponse);
