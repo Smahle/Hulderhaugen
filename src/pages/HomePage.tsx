@@ -1,6 +1,3 @@
-// src/pages/HomePage.tsx
-
-import React from "react";
 import PhotoGallery from "../components/PhotoGallery";
 
 export default function HomePage() {

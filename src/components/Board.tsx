@@ -1,5 +1,5 @@
 import Square from "./Square";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import classes from "./Board.module.css";
 import ResetButton from "./ResetButton";
 
@@ -43,7 +43,9 @@ function Board() {
     ) {
       winner = "O";
     }
-
+    if (squaresTaken + 1 === 9 && !winner) {
+      setGameOver(true);
+    }
     if (winner) {
       setGameOver(true);
       setScoreArray((prev) =>
