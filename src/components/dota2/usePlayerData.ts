@@ -1,7 +1,8 @@
 // usePlayerData.ts
 
 import { useState } from 'react';
-import { fetchPlayerData, fetchPlayerWinLoss, fetchPlayerMatches, fetchPlayerHeroes } from '../../api/openDotaApi';
+import { fetchPlayerData, fetchPlayerWinLoss, fetchPlayerMatches, fetchPlayerHeroes, fetchMockPlayerData, fetchMockPlayerWinLoss, fetchMockPlayerMatches, fetchMockPlayerHeroes } from '../../api/openDotaApi';
+
 
 interface Match {
     match_id: number;
@@ -30,9 +31,11 @@ interface Player {
 }
 
 const playerIDs = [
-    '35259661', // Bluum
+    '35259661' // Bluum
+    /*
     '25077635', // FEEDMACHINE
     '25094065'  // duckluck
+    */
 ];
 
 const usePlayerData = () => {
@@ -40,16 +43,21 @@ const usePlayerData = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const fetchData = async () => {
+    const fetchData = async (useMock = false) => {
         setLoading(true);
         setError(null);
         try {
             const playerData = await Promise.all(
                 playerIDs.map(async (id) => {
-                    const player = await fetchPlayerData(id);
-                    const winLoss = await fetchPlayerWinLoss(id);
-                    const matches = await fetchPlayerMatches(id);
-                    const heroes = await fetchPlayerHeroes(id);
+                    const fetchFunc = useMock ? fetchMockPlayerData : fetchPlayerData;
+                    const fetchWinLossFunc = useMock ? fetchMockPlayerWinLoss : fetchPlayerWinLoss;
+                    const fetchMatchesFunc = useMock ? fetchMockPlayerMatches : fetchPlayerMatches;
+                    const fetchHeroesFunc = useMock ? fetchMockPlayerHeroes : fetchPlayerHeroes;
+
+                    const player = await fetchFunc(id);
+                    const winLoss = await fetchWinLossFunc(id);
+                    const matches = await fetchMatchesFunc(id);
+                    const heroes = await fetchHeroesFunc(id);
 
                     // Explicitly type the parameters of reduce and sort
                     const totalKills = matches.reduce((sum: number, match: any) => sum + match.kills, 0);

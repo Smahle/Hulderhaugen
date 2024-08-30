@@ -1,4 +1,10 @@
+/* src/api/openDotaApi.ts */
+
 import axios, { AxiosError } from 'axios';
+import mockAccountResponse from './account_response.json';
+import mockHeroesResponse from './heroes_response.json';
+import mockMatchesResponse from './matches_response.json';
+import mockWLResponse from './wl_response.json';
 
 const API_BASE_URL = 'https://api.opendota.com/api';
 
@@ -22,11 +28,7 @@ const fetchWithRetry = async (url: string, retries: number = 5, delay: number = 
     }
 };
 
-// Get a list of all the heroes of Dota 2
-export const fetchHeroList = () => {
-    return fetchWithRetry(`${API_BASE_URL}/heroes`);
-};
-
+/* ----- Real API calls ----- */
 // Fetch player data
 export const fetchPlayerData = (accountId: string) => {
     return fetchWithRetry(`${API_BASE_URL}/players/${accountId}`);
@@ -39,10 +41,16 @@ export const fetchPlayerWinLoss = (accountId: string) => {
 
 // Fetch player matches with optional limit
 export const fetchPlayerMatches = (accountId: string, limit: number = 10) => {
-    return fetchWithRetry(`${API_BASE_URL}/players/${accountId}/matches/${limit}`, 5, 1000);
+    return fetchWithRetry(`${API_BASE_URL}/players/${accountId}/matches?limit=${limit}`);
 };
 
 // Fetch player heroes
 export const fetchPlayerHeroes = (accountId: string) => {
     return fetchWithRetry(`${API_BASE_URL}/players/${accountId}/heroes`);
 };
+
+/* ----- Mock API calls ----- */
+export const fetchMockPlayerData = (id: string) => Promise.resolve(mockAccountResponse);
+export const fetchMockPlayerMatches = (id: string) => Promise.resolve(mockMatchesResponse);
+export const fetchMockPlayerWinLoss = (id: string) => Promise.resolve(mockWLResponse);
+export const fetchMockPlayerHeroes = (id: string) => Promise.resolve(mockHeroesResponse);

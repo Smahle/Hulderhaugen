@@ -1,6 +1,5 @@
 // src/components/dota2/MatchRecap.tsx
 
-import React from "react";
 import styles from "./Dota2Page.module.css"; // Import CSS module
 
 export default function MatchRecap() {

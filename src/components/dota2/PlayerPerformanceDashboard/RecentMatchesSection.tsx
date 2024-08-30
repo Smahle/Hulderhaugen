@@ -1,14 +1,12 @@
-import React from 'react';
 import { getHeroDetails } from '../../../data/heroUtils';
 import styles from '../Dota2Page.module.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // needed for the "Copy-icon" in the Match ID column
 
-interface RecentMatchesSectionProps {
+type TRecentMatchesProps = {
     matches: { match_id: number; hero_id: number; kills: number; deaths: number; assists: number, player_slot: number, radiant_win: boolean }[];
 }
 
-const RecentMatchesSection: React.FC<RecentMatchesSectionProps> = ({ matches }) => {
-
+export default function RecentMatchesSection({ matches }: TRecentMatchesProps) {
     // Function for copying Match ID on click
     const handleCopy = (id: number) => {
         navigator.clipboard.writeText(id.toString())
@@ -58,6 +56,4 @@ const RecentMatchesSection: React.FC<RecentMatchesSectionProps> = ({ matches }) 
             </div>
         </div>
     );
-};
-
-export default RecentMatchesSection;
+}

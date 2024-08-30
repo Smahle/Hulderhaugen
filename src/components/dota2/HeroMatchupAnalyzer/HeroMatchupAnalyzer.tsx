@@ -1,7 +1,6 @@
-// src/components/dota2/HeroMatchupAnalyzer.tsx
+// src/components/dota2/HeroMatchupAnalyzer/HeroMatchupAnalyzer.tsx
 
-import React from "react";
-import styles from "./Dota2Page.module.css"; // Import CSS module
+import styles from "../Dota2Page.module.css"; // Import CSS module
 
 export default function HeroMatchupAnalyzer() {
   return (

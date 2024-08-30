@@ -1,12 +1,11 @@
-import React from 'react';
 import { getHeroDetails } from '../../../data/heroUtils';
 import styles from '../Dota2Page.module.css';
 
-interface MostPlayedHeroesSectionProps {
-    heroes: { heroId: number; games: number; win: number }[];
+type TMostPlayedHeroesSectionProps = {
+    heroesProps: { heroId: number; games: number; win: number }[];
 }
 
-const MostPlayedHeroesSection: React.FC<MostPlayedHeroesSectionProps> = ({ heroes }) => {
+export default function MostPlayedHeroesSection({ heroesProps }: TMostPlayedHeroesSectionProps) {
     return (
         <div className={styles.sectionItem}>
             <h3>Most Played Heroes</h3>
@@ -17,7 +16,7 @@ const MostPlayedHeroesSection: React.FC<MostPlayedHeroesSectionProps> = ({ heroe
                     <span className={styles.heroTableColumn}>Winrate</span>
                 </div>
                 <ul className={styles.heroList}>
-                    {heroes.map((hero) => {
+                    {heroesProps.map((hero) => {
                         const heroDetails = getHeroDetails(hero.heroId);
                         const winRate = (hero.win / hero.games * 100).toFixed(2);
 
@@ -37,6 +36,4 @@ const MostPlayedHeroesSection: React.FC<MostPlayedHeroesSectionProps> = ({ heroe
             </div>
         </div>
     );
-};
-
-export default MostPlayedHeroesSection;
+}
