@@ -30,6 +30,9 @@ export default function Navbar() {
             <Link className={classes["collapsed-links"]} to="/dota2">
               <span>Dota2</span>
             </Link>
+            <Link className={classes["collapsed-links"]} to="/taskManager">
+              <span>Task Manager</span>
+            </Link>
           </div>
         </div>
       </div>
