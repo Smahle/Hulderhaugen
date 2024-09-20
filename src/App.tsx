@@ -5,6 +5,7 @@ import GamePage from "./pages/GamePage";
 import HomePage from "./pages/HomePage";
 import Dota2Page from "./pages/Dota2Page";
 import MealPlannerPage from "./pages/MealPlannerPage";
+import TaskManagerPage from "./pages/TaskManagerPage";
 
 const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: React.FC = () => {
         <Route path="/game" element={<GamePage />} />
         <Route path="/dota2" element={<Dota2Page />} />
         <Route path="/mealplanner" element={<MealPlannerPage />} />
+        <Route path="/taskManager" element={<TaskManagerPage />} />
       </Routes>
     </Router>
   );

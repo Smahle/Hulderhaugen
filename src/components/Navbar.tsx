@@ -33,6 +33,9 @@ export default function Navbar() {
             <Link className={classes["collapsed-links"]} to="/mealplanner">
               <span>Meal Planner</span>
             </Link>
+            <Link className={classes["collapsed-links"]} to="/taskManager">
+              <span>Task Manager</span>
+            </Link>
           </div>
         </div>
       </div>
