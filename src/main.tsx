@@ -5,12 +5,18 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap/dist/css/bootstrap.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { initializeDB } from './data/mealplannerDB';
 
 const rootElement = document.getElementById("root")!;
 const root = createRoot(rootElement);
 
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// Initialize the database and then render the application
+initializeDB().then(() => {
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+}).catch(error => {
+  console.error('Failed to initialize the database:', error);
+});

@@ -1,0 +1,59 @@
+/* src/components/MealPlanner/MealPlannerPage.module.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8; /* light grayish blue */
+    color: #333; /* dark gray for text */
+  }
+  
+  h1 {
+    color: #4d4dff; /* cool lavender for the heading */
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"], select {
+    padding: 10px;
+    margin-right: 10px;
+    border: 2px solid #00bfae; /* teal */
+    border-radius: 4px;
+    outline: none;
+    background-color: #e6f7f7; /* soft light teal */
+    color: #333;
+  }
+  
+  input[type="text"]:focus, select:focus {
+    border-color: #4d4dff; /* lavender when focused */
+  }
+  
+  button {
+    background-color: #4d4dff; /* lavender for button */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #3b3bff; /* darker lavender on hover */
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    background-color: #f0f4f8; /* light grayish blue */
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #00bfae; /* teal border */
+    border-radius: 4px;
+  }
+  
+  li:hover {
+    background-color: #e6f7f7; /* slight hover effect */
+  }
+  
