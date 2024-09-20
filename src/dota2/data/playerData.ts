@@ -45,21 +45,21 @@ const usePlayerData = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const fetchData = async (useMock = false) => {
+    const getData = async (useMock = false) => {
         setLoading(true);
         setError(null);
         try {
             const playerData = await Promise.all(
                 playerIDs.map(async (id) => {
-                    const fetchPlayerFunc = useMock ? mockGetPlayer : apiGetPlayer;
-                    const fetchWinLossFunc = useMock ? mockGetPlayerWinLoss : apiGetPlayerWinLoss;
-                    const fetchMatchesFunc = useMock ? mockGetPlayerMatches : apiGetPlayerMatches;
-                    const fetchHeroesFunc = useMock ? mockGetPlayerHeroes : apiGetPlayerHeroes;
+                    const getPlayer = useMock ? mockGetPlayer : apiGetPlayer;
+                    const getPlayerWinLoss = useMock ? mockGetPlayerWinLoss : apiGetPlayerWinLoss;
+                    const getPlayerMatches = useMock ? mockGetPlayerMatches : apiGetPlayerMatches;
+                    const getPlayerHeroes = useMock ? mockGetPlayerHeroes : apiGetPlayerHeroes;
 
-                    const player = await fetchPlayerFunc(id);
-                    const winLoss = await fetchWinLossFunc(id);
-                    const matches = await fetchMatchesFunc(id);
-                    const heroes = await fetchHeroesFunc(id);
+                    const player = await getPlayer(id);
+                    const winLoss = await getPlayerWinLoss(id);
+                    const matches = await getPlayerMatches(id);
+                    const heroes = await getPlayerHeroes(id);
 
                     // Explicitly type the parameters of reduce and sort
                     const totalKills = matches.reduce((sum: number, match: any) => sum + match.kills, 0);
@@ -95,7 +95,7 @@ const usePlayerData = () => {
         }
     };
 
-    return { playerStats, loading, error, fetchData };
+    return { playerStats, loading, error, fetchData: getData };
 };
 
 export default usePlayerData;
