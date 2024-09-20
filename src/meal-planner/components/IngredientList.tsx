@@ -1,8 +1,8 @@
-// src/components/meal-planner/IngredientList.tsx
+// src/meal-planner/components/IngredientList.tsx
 
-import styles from "../../styles/MealPlannerPage.module.css";
+import styles from "../styles/MealPlannerPage.module.css";
 import { useState, useEffect } from 'react';
-import { addIngredient, getIngredients } from '../../data/mealplannerDB'; // Import database functions
+import { addIngredient, getIngredients } from '../data/MealPlannerDatabase'; // Import database functions
 
 type Ingredient = {
   id: number;

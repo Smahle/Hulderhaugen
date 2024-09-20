@@ -1,11 +1,11 @@
-// src/data/mealplannerDB.ts
+// src/meal-planner/data/meal-planner-db.ts
 
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 
 async function openDB() {
   return open({
-    filename: './src/data/mealplanner.db', // Ensure this path is correct
+    filename: './src/meal-planner/data/mealplanner.db',
     driver: sqlite3.Database,
   });
 }

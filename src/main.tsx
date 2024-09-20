@@ -5,7 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap/dist/css/bootstrap.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { initializeDB } from './data/mealplannerDB';
+import { initializeDB } from './meal-planner/data/MealPlannerDatabase.ts';
 
 const rootElement = document.getElementById("root")!;
 const root = createRoot(rootElement);
