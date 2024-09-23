@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import classes from "./TaskManagerList.module.css";
+import { left } from "@popperjs/core";
 
 type TCard = {
   title: string;
@@ -102,7 +103,6 @@ export default function TaskManagerList() {
           (item) => item?.title !== cardDragged.card?.title
         )
       );
-      console.log("proogressarrauy" + inProgressArray);
       if (endArray == "toDoArray") {
         setToDoArray([...toDoArray, cardDragged.card]);
       } else if (endArray == "reviewArray") {
@@ -114,7 +114,6 @@ export default function TaskManagerList() {
       setReviewArray(
         reviewArray?.filter((item) => item?.title !== cardDragged.card?.title)
       );
-      console.log("rewewarray" + reviewArray);
       if (endArray == "toDoArray") {
         setToDoArray([...toDoArray, cardDragged.card]);
       } else if (endArray == "inProgressArray") {
@@ -126,7 +125,6 @@ export default function TaskManagerList() {
       setDoneArray(
         doneArray?.filter((item) => item?.title !== cardDragged.card?.title)
       );
-      console.log("doonearray" + doneArray);
       if (endArray == "toDoArray") {
         setToDoArray([...toDoArray, cardDragged.card]);
       } else if (endArray == "inProgressArray") {
@@ -141,10 +139,9 @@ export default function TaskManagerList() {
       <div
         onDragOver={handleDragOver}
         onDrop={(e) => handleDrop(e, "toDoArray")}
-        style={{ height: "200px", background: "lightblue" }}
-        className={classes.listContainer}
+        className={classes.listContainerWithButton}
       >
-        <ul>
+        <ul className={classes.listContainer}>
           {toDoArray?.map((card) => (
             <li
               draggable="true"
@@ -152,19 +149,20 @@ export default function TaskManagerList() {
               className={classes.card}
               key={card?.title}
             >
-              <button>{card?.title}</button>
+              {card?.title}
             </li>
           ))}
         </ul>
-        <button>+ add card</button>
+        <button className={`btn btn-light ${classes.buttonCard}`}>
+          + add card
+        </button>
       </div>
       <div
         onDragOver={handleDragOver}
         onDrop={(e) => handleDrop(e, "inProgressArray")}
-        style={{ height: "200px", background: "lightblue" }}
-        className={classes.listContainer}
+        className={classes.listContainerWithButton}
       >
-        <ul className={classes.card}>
+        <ul className={classes.listContainer}>
           {inProgressArray?.map((card) => (
             <li
               draggable="true"
@@ -172,19 +170,20 @@ export default function TaskManagerList() {
               className={classes.card}
               key={card?.title}
             >
-              <button>{card?.title}</button>
+              {card?.title}
             </li>
           ))}
         </ul>
-        <button>+ add card</button>
+        <button className={`btn btn-light ${classes.buttonCard}`}>
+          + add card
+        </button>
       </div>
       <div
         onDragOver={handleDragOver}
         onDrop={(e) => handleDrop(e, "reviewArray")}
-        style={{ height: "200px", background: "lightblue" }}
-        className={classes.listContainer}
+        className={classes.listContainerWithButton}
       >
-        <ul className={classes.card}>
+        <ul className={classes.listContainer}>
           {reviewArray?.map((card) => (
             <li
               draggable="true"
@@ -192,19 +191,20 @@ export default function TaskManagerList() {
               className={classes.card}
               key={card?.title}
             >
-              <button>{card?.title}</button>
+              {card?.title}
             </li>
           ))}
         </ul>
-        <button>+ add card</button>
+        <button className={`btn btn-light ${classes.buttonCard}`}>
+          + add card
+        </button>
       </div>
       <div
         onDragOver={handleDragOver}
         onDrop={(e) => handleDrop(e, "doneArray")}
-        style={{ height: "200px", background: "lightblue" }}
-        className={classes.listContainer}
+        className={classes.listContainerWithButton}
       >
-        <ul className={classes.card}>
+        <ul className={classes.listContainer}>
           {doneArray?.map((card) => (
             <li
               draggable="true"
@@ -212,11 +212,13 @@ export default function TaskManagerList() {
               className={classes.card}
               key={card?.title}
             >
-              <button>{card?.title}</button>
+              {card?.title}
             </li>
           ))}
         </ul>
-        <button>+ add card</button>
+        <button className={`btn btn-light ${classes.buttonCard}`}>
+          + add card
+        </button>
       </div>
     </div>
   );
