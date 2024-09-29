@@ -28,19 +28,38 @@ li {
   padding: 0; /* Ensure no padding */
   margin: 0; /* Ensure no margin */
 }
+
 .card {
   display: flex;
-  align-self: center;
-  text-align: center;
-  border-color: pink;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures space between items */
+  align-items: flex-start; /* Aligns everything to the left */
+  text-align: left;
   border-radius: 10px;
-  border: 10cm;
-  border: solid;
+  border: solid 2px pink;
   width: 90%;
   margin: 8px;
-  height: 60px;
+  padding: 10px;
+  box-sizing: border-box; /* Ensures padding and border are included in width/height calculations */
+  word-wrap: break-word; /* Breaks long text to prevent overflow */
+  overflow: hidden; /* Prevents overflowing content */
 }
 
-.buttonCard {
-  margin: 10px;
+.bottomIcon {
+  height: 40px;
+  width: 40px;
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+.title {
+  flex-grow: 1;
+  width: 100%; /* Make sure the title takes full width */
+  word-wrap: break-word; /* Ensures long text wraps to the next line */
+  margin-bottom: 8px;
+}
+
+.card button {
+  flex-shrink: 0; /* Prevents the button from shrinking */
+  padding: 0;
 }
