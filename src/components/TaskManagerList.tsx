@@ -203,13 +203,11 @@ export default function TaskManagerList() {
             >
               <span className={classes.title}>{card?.title}</span>
               <CommentsModal commentArray={card?.comments ?? []} />{" "}
+              <ModalWithDeck cards={toDoArray} />
             </li>
           ))}
         </ul>
-        <button className={`btn btn-light ${classes.buttonCard}`}>
-          + add card
-        </button>
-        <ModalWithDeck cards={toDoArray} />
+
 
       </div>
       <div
@@ -227,12 +225,10 @@ export default function TaskManagerList() {
             >
               <span className={classes.title}>{card?.title}</span>{" "}
               <CommentsModal commentArray={card?.comments ?? []} />{" "}
+              <ModalWithDeck cards={inProgressArray} />
             </li>
           ))}
         </ul>
-        <button className={`btn btn-light ${classes.buttonCard}`}>
-          + add card
-        </button>
       </div>
       <div
         onDragOver={handleDragOver}
@@ -250,12 +246,10 @@ export default function TaskManagerList() {
               {" "}
               <span className={classes.title}>{card?.title}</span>{" "}
               <CommentsModal commentArray={card?.comments ?? []} />{" "}
+              <ModalWithDeck cards={reviewArray} />
             </li>
           ))}
         </ul>
-        <button className={`btn btn-light ${classes.buttonCard}`}>
-          + add card
-        </button>
       </div>
       <div
         onDragOver={handleDragOver}
@@ -273,12 +267,10 @@ export default function TaskManagerList() {
               {" "}
               <span className={classes.title}>{card?.title}</span>{" "}
               <CommentsModal commentArray={card?.comments ?? []} />{" "}
+              <ModalWithDeck cards={doneArray} />
             </li>
           ))}
         </ul>
-        <button className={`btn btn-light ${classes.buttonCard}`}>
-          + add card
-        </button>
       </div>
     </div>
   );

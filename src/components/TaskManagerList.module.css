@@ -4,10 +4,11 @@ ul {
   list-style: none; /* Removes bullet points */
 }
 
-li {
-  padding: 0; /* Optional, to ensure no padding on list items */
-  margin: 0; /* Optional, to ensure no margin on list items */
+ul li {
+  padding: 0; /* Removes any padding inside list items */
+  margin: 0; /* Removes any margin around list items */
 }
+
 
 .container {
   display: grid;

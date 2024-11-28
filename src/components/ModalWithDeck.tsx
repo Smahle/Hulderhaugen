@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "./ModalWithDeck";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import classes from "./TaskManagerList.module.css";
+import classes from "./Modal.module.css";
 
 type TCard = {
   title: string;
@@ -59,8 +59,7 @@ const ModalWithDeck: React.FC<{ cards: TCard[] }> = ({ cards }) => {
 
   return (
     <div>
-      <h1>React Pop-Up Form</h1>
-      <button onClick={openModal}>Open Form</button>
+      <button onClick={openModal}>+ add card</button>
 
       {/* Conditional rendering of modal */}
       {isModalOpen && (
