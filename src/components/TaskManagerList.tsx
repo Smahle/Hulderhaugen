@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import classes from "./TaskManagerList.module.css";
 
 import CommentsModal from "./CommentsModal";
+import React from "react";
+import ModalWithDeck from "./ModalWithDeck";
 
 //TODO: add card poput.
 // faktissk ta in data fra poput
@@ -207,6 +209,8 @@ export default function TaskManagerList() {
         <button className={`btn btn-light ${classes.buttonCard}`}>
           + add card
         </button>
+        <ModalWithDeck cards={toDoArray} />
+
       </div>
       <div
         onDragOver={handleDragOver}
