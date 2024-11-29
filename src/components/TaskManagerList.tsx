@@ -11,6 +11,16 @@ import ModalWithDeck from "./ModalWithDeck";
 // kontekstt meny oppe t høgre på hæle brettte. tre prekka åpna kontekstmeny me 3  valg elns
 // LAG ICON
 
+//types.ts
+//export type TCard = {
+ // id: string;
+ // title: string;
+ // description: string;
+  // Add more fields as necessary
+//};
+
+
+
 type TCard = {
   title: string;
   description: string;
