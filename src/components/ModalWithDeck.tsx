@@ -1,48 +1,39 @@
 import React, { useState } from "react";
-import Modal from "./ModalWithDeck";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import classes from "./Modal.module.css";
 
+// Type definitions for the card
 type TCard = {
   title: string;
   description: string;
-  deadline: Date;
-  comments: comment[];
-} | null;
-
-type upvote = {
-  sum: number;
+  deadline?: string;
+  comments?: comment[];
 };
 
 type comment = {
   commentText: string | undefined;
-  upvotes?: upvote;
 };
 
-const ModalWithDeck: React.FC<{ cards: TCard[] }> = ({ cards }) => {
+const ModalWithDeck: React.FC<{ addCard: Function; targetArray: string }> = ({ addCard, targetArray }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
+    title: "",
+    description: "",
+    deadline: "",
   });
 
   // Open and close modal functions
   const openModal = () => {
-    console.log("Opening Modal");
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    console.log("Closing Modal");
     setIsModalOpen(false);
   };
 
   // Handle form data change
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -53,13 +44,24 @@ const ModalWithDeck: React.FC<{ cards: TCard[] }> = ({ cards }) => {
   // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Form submitted! Thank you.");
-    closeModal(); // Close the modal after form submission
+    
+    // Create a new card object with the form data
+    const newCard: TCard = {
+      title: formData.title,
+      description: formData.description,
+      deadline: formData.deadline,
+    };
+
+    // Pass the new card to the parent function
+    addCard(newCard, targetArray);
+
+    // Close the modal after form submission
+    closeModal();
   };
 
   return (
     <div>
-      <button onClick={openModal}>+ add card</button>
+      <button onClick={openModal}>+ Add Card</button>
 
       {/* Conditional rendering of modal */}
       {isModalOpen && (
@@ -72,52 +74,39 @@ const ModalWithDeck: React.FC<{ cards: TCard[] }> = ({ cards }) => {
                   <button type="button" className="btn-close" onClick={closeModal} aria-label="Close"></button>
                 </div>
                 <div className="modal-body">
-                  <ul>
-                    {cards?.map((card, index) => (
-                      <li key={index}>
-                        <h3>{card?.title}</h3>
-                        <p>{card?.description}</p>
-                        <ul>
-                          {card?.comments.map((comment, i) => (
-                            <li key={i}>{comment.commentText}</li>
-                          ))}
-                        </ul>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Form for submitting messages */}
+                  {/* Form for submitting cards */}
                   <form onSubmit={handleSubmit}>
-                    <label htmlFor="name">Name:</label>
+                    <label htmlFor="title">Title:</label>
                     <input
                       type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
+                      id="title"
+                      name="title"
+                      value={formData.title}
                       onChange={handleChange}
                       required
                     />
                     <br />
 
-                    <label htmlFor="email">Email:</label>
+                    <label htmlFor="description">Description:</label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
+                      type="text"
+                      id="description"
+                      name="description"
+                      value={formData.description}
                       onChange={handleChange}
                       required
                     />
                     <br />
 
-                    <label htmlFor="message">Message:</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
+                    <label htmlFor="deadline">Deadline:</label>
+                    <input
+                      type="date"
+                      id="deadline"
+                      name="deadline"
+                      value={formData.deadline}
                       onChange={handleChange}
                       required
-                    ></textarea>
+                    />
                     <br />
 
                     <button type="submit">Submit</button>
