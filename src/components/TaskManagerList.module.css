@@ -37,7 +37,7 @@ ul li {
   align-items: flex-start; /* Aligns everything to the left */
   text-align: left;
   border-radius: 10px;
-  border: solid 2px pink;
+  border: solid 2px black;
   width: 90%;
   margin: 8px;
   padding: 10px;
@@ -60,6 +60,13 @@ ul li {
   margin-bottom: 8px;
 }
 
+.text {
+  flex-grow: 1;
+  width: 100%; /* Make sure the title takes full width */
+  word-wrap: break-word; /* Ensures long text wraps to the next line */
+  font-size: small;
+  margin-bottom: 8px;
+}
 .card button {
   flex-shrink: 0; /* Prevents the button from shrinking */
   padding: 0;

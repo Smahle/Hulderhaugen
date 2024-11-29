@@ -2,18 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import classes from "./Modal.module.css";
-
-// Type definitions for the card
-type TCard = {
-  title: string;
-  description: string;
-  deadline?: string;
-  comments?: comment[];
-};
-
-type comment = {
-  commentText: string | undefined;
-};
+import { TCard, Comment} from "../types";
 
 const ModalWithDeck: React.FC<{ addCard: Function; targetArray: string }> = ({ addCard, targetArray }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -48,9 +37,9 @@ const ModalWithDeck: React.FC<{ addCard: Function; targetArray: string }> = ({ a
     // Create a new card object with the form data
     const newCard: TCard = {
       title: formData.title,
+      comments: [],
       description: formData.description,
-      deadline: formData.deadline,
-    };
+      deadline: new Date(formData.deadline),     };
 
     // Pass the new card to the parent function
     addCard(newCard, targetArray);

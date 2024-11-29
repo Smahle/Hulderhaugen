@@ -3,28 +3,7 @@ import classes from "./TaskManagerList.module.css";
 import CommentsModal from "./CommentsModal";
 import ModalWithDeck from "./ModalWithDeck";
 import React from "react";
-
-// Types
-type TCard = {
-  title: string;
-  description: string;
-  deadline: Date;
-  comments: Comment[];
-};
-
-type Comment = {
-  commentText: string | undefined;
-  upvotes?: Upvote;
-};
-
-type Upvote = {
-  sum: number;
-};
-
-type DraggedCard = {
-  card: TCard | null;
-  sourceArray?: keyof TaskArrays | null;
-};
+import { TCard, DraggedCard, Comment, Upvote } from "../types";
 
 type TaskArrays = {
   toDoArray: TCard[];
@@ -132,6 +111,7 @@ export default function TaskManagerList() {
           className={classes.listContainerWithButton}
         >
           <ul className={classes.listContainer}>
+            
             {cards.map((card) => (
               <li
                 draggable="true"
@@ -140,6 +120,8 @@ export default function TaskManagerList() {
                 key={card.title}
               >
                 <span className={classes.title}>{card.title}</span>
+                <span className={classes.text}>{card.description}</span>
+                <span className={classes.text}>Deadline: {new Date(card.deadline).toLocaleDateString()}</span>
                 <CommentsModal commentArray={card.comments} />
                 <ModalWithDeck addCard={addCard} targetArray={arrayKey as keyof TaskArrays} />
               </li>
