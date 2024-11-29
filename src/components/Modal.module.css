@@ -24,10 +24,7 @@
     position: relative; /* Allows positioning of the close button */
     animation: slideIn 0.3s ease-in-out; /* Adds a sliding animation */
   }
-  button {
-    margin: 8px;
-    padding: 10px;
-  }
+  
   /* Close Button Style */
   .close {
     color: #aaa;

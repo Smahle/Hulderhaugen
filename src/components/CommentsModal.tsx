@@ -36,8 +36,6 @@ export default function CommentsModal({ commentArray }: CommentsModalProps) {
           className="modal fade show"
           style={{ display: "block" }}
           tabIndex={-1}
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
         >
           <div className="modal-dialog">
             <div className="modal-content">
