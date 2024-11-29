@@ -13,6 +13,7 @@ import image8 from "../assets/images/Loke8.jpg";
 import image9 from "../assets/images/Loke9.jpg";
 import image10 from "../assets/images/Loke10.jpg";
 import image11 from "../assets/images/Stian1.jpg";
+import React from "react";
 
 export default function PhotoGallery() {
   const settings = {

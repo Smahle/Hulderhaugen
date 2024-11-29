@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import classes from "./Square.module.css";
+import React from "react";
 
 type externalProps = {
   id: number;

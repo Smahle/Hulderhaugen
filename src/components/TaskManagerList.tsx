@@ -1,9 +1,9 @@
 import { useState } from "react";
 import classes from "./TaskManagerList.module.css";
 import CommentsModal from "./CommentsModal";
-import ModalWithDeck from "./ModalWithDeck";
 import React from "react";
 import { TCard, DraggedCard, Comment, Upvote } from "../types";
+import TaskCardModal from "./TaskCardModal";
 
 type TaskArrays = {
   toDoArray: TCard[];
@@ -123,7 +123,7 @@ export default function TaskManagerList() {
                 <span className={classes.text}>{card.description}</span>
                 <span className={classes.text}>Deadline: {new Date(card.deadline).toLocaleDateString()}</span>
                 <CommentsModal commentArray={card.comments} />
-                <ModalWithDeck addCard={addCard} targetArray={arrayKey as keyof TaskArrays} />
+                <TaskCardModal addCard={addCard} targetArray={arrayKey as keyof TaskArrays} />
               </li>
             ))}
           </ul>

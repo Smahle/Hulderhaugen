@@ -4,7 +4,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import classes from "./Modal.module.css";
 import { TCard, Comment} from "../types";
 
-const ModalWithDeck: React.FC<{ addCard: Function; targetArray: string }> = ({ addCard, targetArray }) => {
+const TaskCardModal: React.FC<{ addCard: Function; targetArray: string }> = ({ addCard, targetArray }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
@@ -119,4 +119,4 @@ const ModalWithDeck: React.FC<{ addCard: Function; targetArray: string }> = ({ a
   );
 };
 
-export default ModalWithDeck;
+export default TaskCardModal;
